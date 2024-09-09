@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 //getting the routes
 app.get("/", (req, res) => {
   res.send("Hello Welome to website");
+  console.log("Got Get Request");
 });
 
 // all products apis

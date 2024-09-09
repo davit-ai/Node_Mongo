@@ -10,26 +10,26 @@ export const postProduct = () => {
       });
     }
 
-    // Get the last product to determine the next sequence value
-    const sequence = await Product.findOne().sort({ createdAt: -1 });
-    let nextId;
-    if (!product.sequence) {
-      // Initialize sequence if no products exist
-      nextId = 1;
-    } else {
-      // Extract the sequence value from the last product's ID
-      const lastId = sequence.id;
-      const sequenceValue = parseInt(lastId.substring(1));
-      nextId = sequenceValue + 1;
-    }
+    // // Get the last product to determine the next sequence value
+    // const sequence = await Product.findOne().sort({ createdAt: -1 });
+    // let nextId;
+    // if (!product.sequence) {
+    //   // Initialize sequence if no products exist
+    //   nextId = 1;
+    // } else {
+    //   // Extract the sequence value from the last product's ID
+    //   const lastId = sequence.id;
+    //   const sequenceValue = parseInt(lastId.substring(1));
+    //   nextId = sequenceValue + 1;
+    // }
 
-    // Generate the product ID in the format "p0001"
-    const productId = `p${String(nextId).padStart(4, "0")}`;
+    // // Generate the product ID in the format "p0001"
+    // const productId = `p${String(nextId).padStart(4, "0")}`;
 
     const newProduct = new Product({
       ...product,
-      idValue: productId,
-      sequence: nextId,
+      // idValue: productId,
+      // sequence: nextId,
     });
     try {
       await newProduct.save();
